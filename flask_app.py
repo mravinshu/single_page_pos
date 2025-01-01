@@ -157,4 +157,4 @@ def generate_invoice(issuer_details, buyer_details, items, filename, invoice_num
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=int(os.environ.get('PORT', 4000)))
