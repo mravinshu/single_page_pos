@@ -9,10 +9,8 @@ from reportlab.lib import colors
 from reportlab.lib.units import inch
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 CORS(app)
-
 
 @app.route('/generate-pdf', methods=['POST'])
 def generate_pdf():
@@ -22,7 +20,7 @@ def generate_pdf():
     try:
         payload = request.json
         generate_invoice(payload['issuer_details'], payload['buyer_details'], payload['items'], payload['invoice_number'] + '.pdf', payload['invoice_number'])
-        return jsonify({"message": "PDF generated successfully!"}), 201
+        return jsonify({"message": "PDF generated successfully!"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
